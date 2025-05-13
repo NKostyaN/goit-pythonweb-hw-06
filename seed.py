@@ -6,13 +6,6 @@ from faker import Faker
 from models import Student, Group, Teacher, Subject, Grade
 
 
-# DATABASE_URL = "postgresql+psycopg2://postgres:supersecret@localhost:5432/postgres"
-# DATABASE_URL = "postgresql+psycopg2://postgres:qwerty@localhost:5432/postgres"
-
-# engine = create_engine(
-#     "postgresql+psycopg2://postgres:qwerty@localhost:5432/postgres"
-# )
-# db = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 db = SessionLocal()
 fake = Faker()
 
@@ -22,7 +15,6 @@ def make_groups():
     groups = []
     for name in names:
         group = Group(name=name)
-        # db.add(group)
         groups.append(group)
     db.add_all(groups)
     db.commit()
